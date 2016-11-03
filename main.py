@@ -3,7 +3,6 @@ def pressexit():
     input('按Enter键退出...')
     os._exit(1)
 def SMS(str):
-    print(str)
     feedback = os.popen(str).readlines()
     if feedback != ['\n']:
         print('修改失败，请将该程序右键以管理员身份运行')

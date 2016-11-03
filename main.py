@@ -79,6 +79,7 @@ def reset():
 
 def main():
     print('本程序面向不会改ip地址的纯小白')
+    print('因为由python编写,打包成exe的文件略大,不喜勿用')
     print('注意:此脚本需要右键以管理员身份运行!!')
     print('如有建议或者bug请联系qq2991320574')
     print('能满足的功能：')

@@ -104,4 +104,5 @@ def main():
             os._exit(0)
         else:
             print(u'输入错误请重新输入')
-main()
+if __name__ == "__main__":
+    main()

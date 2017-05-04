@@ -14,7 +14,7 @@ class MainPanel(QTabWidget):
         super().__init__()
 
         self.resize(250, 150)
-        self.setWindowTitle('@601040231')
+        self.setWindowTitle('JluNetFixer@601040231')
         self.setWindowIcon(QIcon('py.ico'))
 
         self.login_box = QWidget()
@@ -25,12 +25,12 @@ class MainPanel(QTabWidget):
         self.addTab(self.dis_box, '状态')
 
         self.text = QTextEdit()
+        self.text.setReadOnly(True)
 
         self.setTabEnabled(1, False)
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowMinimizeButtonHint)
         self.setFixedSize(self.width(), self.height())
         self.show()
-        self.display()
 
     def login_panel(self):
         QToolTip.setFont(QFont('SansSerif', 10))
@@ -79,17 +79,15 @@ class MainPanel(QTabWidget):
         main_layout.addLayout(btn_layout, 2, 0)
 
     def display(self):
+        self.text.setText('')
         self.setCurrentIndex(1)
         self.setTabEnabled(1, True)
-
+        self.show()
         lay = QGridLayout(self.dis_box)
         lay.setContentsMargins(0, 0, 0, 0)
         lay.setSpacing(0)
         lay.addWidget(self.text, 1, 0)
-
-    def checkButton(self):
-        self.text.moveCursor(QTextCursor.End)
-        self.text.insertPlainText(self.IPHostnameEdit.text())
+        self.text.insertPlainText('22222222222')
 
 if __name__ == '__main__':
     app = QApplication(argv)

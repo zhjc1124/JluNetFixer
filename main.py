@@ -1,17 +1,11 @@
 import os
+import re
 
-FOUNDED = False  # 网卡是否找到
-# dos运行ipconfig/all
-for line in os.popen("ipconfig /all").readlines():  # 找出里面的以太网网卡
-    if FOUNDED:
-        if u'物理地址' in line:
-            mac = line.split(':')[1].strip()
-        if u'适配器' in line:
-            break
-    if u'以太网适配器 本地连接' in line:
-        FOUNDED = u'本地连接'
-    if u'以太网适配器 以太网' in line:
-        FOUNDED = u'以太网'
+pattern = re.compile(r'(以太网适配器 (以太网|本地连接)).*?物理地址.*?: (.*?)' + '\n', re.DOTALL)
+infos = os.popen("ipconfig /all").read()
+match = pattern.search(infos)
+FOUNDED = match.group(1)
+mac = match.group(3)
 
 
 def pressexit():
